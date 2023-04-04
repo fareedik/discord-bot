@@ -26,10 +26,7 @@ for (const folder of commandFolders) {
       folder,
       file,
     ));
-    console.log(command.data.toJSON());
-    console.log(commands);
     commands.push(command.data.toJSON());
-    console.log(commands);
   }
 }
 
