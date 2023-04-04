@@ -1,12 +1,12 @@
 const { SlashCommandBuilder } = require('discord.js');
 
+
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('wing')
+		.setName('blackjack')
 		.setDescription('Replies with Pong!'),
 	async execute(interaction) {
-		await interaction.reply('Pong!');
+        let num = Math.floor(Math.random() * 8); 
+		await interaction.reply(num.toString());
 	},
 };
-
-
