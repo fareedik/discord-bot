@@ -26,8 +26,5 @@ jobs:
         
     - name: Redeploy Discord Bot
       run: |
-        # Get the IP address of the Vultr instance
-        IP=$(vultr-cli instance list | grep "my-project-server" | awk '{print $3}')
-
         # SSH into the instance and run the update script
-        ssh root@$IP 'cd /root/discord-bot && pm2 stop Discord-Bot && git pull && npm run build && pm2 restart Discord-Bot'
+        ssh root@136.244.92.253 'cd /root/discord-bot && pm2 stop Discord-Bot && git pull && npm run build && pm2 restart Discord-Bot'
