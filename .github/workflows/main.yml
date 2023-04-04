@@ -14,16 +14,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    
     - name: Checkout code
       uses: actions/checkout@v2
-
-    - name: Install vultr-cli
+      
+    - name: GitHub Action for Vultr - vultr-cli
       uses: techknowlogick/action-vultr@v2.3.0
-
+      with:
+        # Vultr API Key
+        token: ${{ secrets.22RENWV4IVAPMTRMEQ5GQ4IHMIOJFHOEP66A }}
+        
     - name: Redeploy Discord Bot
       run: |
         # Get the IP address of the Vultr instance
-        IP=$(vultr-cli instance list | grep "YourInstanceName" | awk '{print $3}')
+        IP=$(vultr-cli instance list | grep "my-project-server" | awk '{print $3}')
 
         # SSH into the instance and run the update script
-        ssh root@$IP 'cd /path/to/your/bot && git pull && pm2 restart your-bot-name'
+        ssh root@$IP 'cd /root/discord-bot && pm2 stop Discord-Bot && git pull && npm run build && pm2 restart Discord-Bot'
