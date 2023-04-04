@@ -15,7 +15,7 @@ module.exports = {
 
 			await interaction.reply("  Card_1 : "+Card_1.toString()+"  Card 2 : "+Card_2.toString()+" The Sum of your Card is " +sum.toString()+" You have won the Blackjack");
 		} 
-		else if (sum! == 21)
+		else if (sum !== 21)
 		{
 		 await interaction.reply("You will have to pick a card")
 
