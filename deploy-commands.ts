@@ -27,7 +27,6 @@ for (const folder of commandFolders) {
       file,
     ));
     commands.push(command.data.toJSON());
-    console.log(command)
   }
 }
 
