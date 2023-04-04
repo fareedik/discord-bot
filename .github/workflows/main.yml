@@ -1,37 +1,29 @@
-name: Deploy to Vultr
+name: Redeploy Discord Bot on Vultr
 
 on:
   push:
     branches:
       - main
   pull_request:
-    branches: [ "main" ]
+    types: [closed]
+    branches:
+      - main
+
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14.x'
+    - name: Install vultr-cli
+      uses: techknowlogick/action-vultr@v2.3.0
 
-    - name: Install dependencies
-      run: npm install
+    - name: Redeploy Discord Bot
+      run: |
+        # Get the IP address of the Vultr instance
+        IP=$(vultr-cli instance list | grep "YourInstanceName" | awk '{print $3}')
 
-    - name: Build application
-      run: npm run build
-
-    - name: Deploy to Vultr
-      uses: "vultr/marketplace-deploy@v1.0.0"
-      with:
-        api-key: "${{ secrets.VULTR_API_KEY }}"
-        ssh-key: "${{ secrets.VULTR_SSH_KEY }}"
-        script: |
-          cd /root/discord-bot/
-          git pull
-          npm install
-          pm2 restart index.ts
+        # SSH into the instance and run the update script
+        ssh root@$IP 'cd /path/to/your/bot && git pull && pm2 restart your-bot-name'
