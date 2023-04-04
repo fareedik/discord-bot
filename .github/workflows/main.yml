@@ -22,7 +22,7 @@ jobs:
       uses: techknowlogick/action-vultr@v2.3.0
       with:
         # Vultr API Key
-        token: ${{ secrets.22RENWV4IVAPMTRMEQ5GQ4IHMIOJFHOEP66A }}
+        token: ${{ 22RENWV4IVAPMTRMEQ5GQ4IHMIOJFHOEP66A }}
         
     - name: Redeploy Discord Bot
       run: |
