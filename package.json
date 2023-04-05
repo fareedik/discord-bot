@@ -12,7 +12,6 @@
   "author": "Fareed-Imk",
   "license": "ISC",
   "dependencies": {
-    "cards": "^2.0.3",
     "discord-blackjack": "^4.0.0",
     "discord.js": "^14.9.0",
     "dotenv": "^16.0.3"
