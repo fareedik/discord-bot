@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
+const { MessageActionRow, MessageButton, MessageEmbed } = require('discord.js');
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -131,9 +132,20 @@ module.exports = {
     }
 
     // Start the game
-    await interaction.reply(`Your hand: ${playerString()}\nDealer hand: ${dealerHand[0]} **?**\nYour score: ${playerScore()}\nDealer score: ${dealerScore()}`);
-    // Prompt the user to hit or stand
-    await interaction.reply(`Hit or stand?`);
+    await interaction.reply(`Your hand: ${playerString()}\nDealer hand: ${dealerHand[0]} **?**\nYour score: ${playerScore()}\nDealer score: ${dealerScore()} \nHit or stand?`);
+
+    // give user two buttons to hit or stand
+    const row = new MessageActionRow()
+      .addComponents(
+        new MessageButton()
+          .setCustomId('hit')
+          .setLabel('Hit')
+          .setStyle('PRIMARY'),
+        new MessageButton()
+          .setCustomId('stand')
+          .setLabel('Stand')
+          .setStyle('SECONDARY'),
+      );
 
     // Create a message collector
     const filter = m => m.author.id === interaction.user.id;
