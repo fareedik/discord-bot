@@ -6,8 +6,8 @@
   "test": "deploy",
   "scripts": {
  
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "echo \"Error: no test specified\" && exit 1"
+    "start": "tsc index.ts && node index.js",
+    "build": "tsc deploy-commands.ts && node deploy-commands.js"
   },
   "keywords": [],
   "author": "Fareed-Imk",
