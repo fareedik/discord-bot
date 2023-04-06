@@ -7,8 +7,8 @@
  
   "scripts": {
  
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "echo \"Error: no test specified\" && exit 1"
+    "start": "tsc index.ts && node index.js",
+    "build-commands": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "Fareed-Imk",
